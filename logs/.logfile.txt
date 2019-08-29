@@ -1,0 +1,7 @@
+:::: Log File ::::
+
+
+[29/8/2019 -- 16:41]  Info task started
+[29/8/2019 -- 16:42]  Info task started
+[29/8/2019 -- 17:21]  Info task started
+[29/8/2019 -- 20:5]  Scripts ran on main.js
