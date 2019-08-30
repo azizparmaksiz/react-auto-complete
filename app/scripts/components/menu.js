@@ -86,7 +86,7 @@ class Menu extends React.Component {
                     <div
                         className="matched-result">
                         <div className="see-result">
-                            <a className="" href="/esearch?search=LIPS">
+                            <a className="" href="javascript:;">
                                 <span className="search-count first" role="link">
                                     Displaying {results.length >= 4 ? '4 ' : results.length + ' '}
                                     of {results.length} Results
@@ -101,14 +101,14 @@ class Menu extends React.Component {
                                 return <div key={index}
                                             className="search-result">
                                     <a
-                                        href="/product/13854/52593/products/makeup/lips/lipstick/retro-matte-lipstick"
+                                        href="javascript:;"
                                         className="search-result-image">
                                         <img className=""
                                              src={item.picture}/>
                                     </a>
                                     <div className="search-result-body">
                                         <a className="search-result-link"
-                                           href="/product/13854/52593/products/makeup/lips/lipstick/retro-matte-lipstick">{item.name}</a>
+                                           href="javascript:;">{item.name}</a>
                                         <div className="search-result-description">
                                             {item.tags.join(', ')}
                                         </div>

@@ -85,8 +85,7 @@ let SEARCH_API = {
             item => {
                 return item.name.toLowerCase().indexOf(SEARCH_API.queryParm.toLowerCase())>0
             }).map(item => { return item }) : [];
-        // if (filteredList && filteredList.length == 0)
-        //     return 'Could not found!';
+
         return filteredList;
     },
     generateResponseCode: () => {
