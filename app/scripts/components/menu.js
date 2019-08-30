@@ -1,6 +1,6 @@
 /**
  * This file will hold the Menu that lives at the top of the Page, this is all rendered using a React Component...
- * 
+ *
  */
 import React from 'react';
 
@@ -13,7 +13,8 @@ class Menu extends React.Component {
     constructor() {
         super();
         this.state = {
-            showingSearch: false
+            showingSearch: false,
+            searchResults: []
         };
     }
 
@@ -35,19 +36,27 @@ class Menu extends React.Component {
      * @param e [Object] - the event from a text change handler
      */
     onSearch(e) {
-        
-        // Start Here
-        // ...
 
+        // gives cors origin error
+        const searchUrl = 'http://localhost:3035/search?query=' + e.target.value;
+        // Start Here
+        fetch(searchUrl)
+            .then(res => res.json())
+            .then((data) => {
+                this.setState({searchResults: data});
+                console.log(data)
+            })
+            .catch(console.log)
     }
 
     /**
      * Renders the default app in the window, we have assigned this to an element called root.
-     * 
+     *
      * @returns JSX
      * @memberof App
-    */
+     */
     render() {
+        let results = this.state.searchResults;
         return (
             <header className="menu">
                 <div className="menu-container">
@@ -69,11 +78,51 @@ class Menu extends React.Component {
                     </div>
                 </div>
                 <div className={(this.state.showingSearch ? "showing " : "") + "search-container"}>
-                    <input type="text" onChange={(e) => this.onSearch(e)} />
+                    <input type="text" onChange={(e) => this.onSearch(e)}/>
                     <a href="#" onClick={(e) => this.showSearchContainer(e)}>
                         <i className="material-icons close">close</i>
                     </a>
+
+                    <div
+                        className="matched-result">
+                        <div className="see-result">
+                            <a className="" href="/esearch?search=LIPS">
+                                <span className="search-count first" role="link">
+                                    Displaying {results.length >= 4 ? '4 ' : results.length + ' '}
+                                    of {results.length} Results
+                                </span>
+                                <span className="search-results last" role="link">See All Results</span>
+                            </a>
+                        </div>
+                        <div className="search-result-container">
+
+                            {results.slice(0, 4).map((item, index) => {
+
+                                return <div key={index}
+                                            className="search-result">
+                                    <a
+                                        href="/product/13854/52593/products/makeup/lips/lipstick/retro-matte-lipstick"
+                                        className="search-result-image">
+                                        <img className=""
+                                             src={item.picture}/>
+                                    </a>
+                                    <div className="search-result-body">
+                                        <a className="search-result-link"
+                                           href="/product/13854/52593/products/makeup/lips/lipstick/retro-matte-lipstick">{item.name}</a>
+                                        <div className="search-result-description">
+                                            {item.tags.join(', ')}
+                                        </div>
+                                    </div>
+                                </div>
+
+                            })}
+
+
+                        </div>
+                    </div>
+
                 </div>
+
             </header>
         );
     }

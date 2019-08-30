@@ -24,6 +24,28 @@ header.menu div.search-container input[type='text'] { min-width: 100%; font-size
 
 header.menu div.search-container i.close { position: absolute; right: 10px; top: 5px; font-size: 36px; line-height: 50px; }
 
+header.menu .matched-result { display: block; }
+
+header.menu .matched-result .see-result { margin: 1rem 1rem; padding: 1rem 1rem; border-bottom: 1px solid #c1c1c1; }
+
+header.menu .matched-result .see-result a { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-direction: row; flex-direction: row; -webkit-box-pack: justify !important; -ms-flex-pack: justify !important; justify-content: space-between !important; color: #757575; text-transform: uppercase; text-decoration: none; font-size: 13px; }
+
+header.menu .matched-result .see-result a .first { font-family: "Courier New", Courier, monospace; }
+
+header.menu .matched-result .see-result a .last { text-decoration: underline !important; }
+
+header.menu .matched-result .search-result-container { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-flow: row; flex-flow: row; }
+
+header.menu .matched-result .search-result-container .search-result { width: 25%; display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-orient: horizontal; -webkit-box-direction: normal; -ms-flex-flow: row; flex-flow: row; margin: 1rem; }
+
+header.menu .matched-result .search-result-container .search-result a.search-result-image img { height: 180px; width: auto; }
+
+header.menu .matched-result .search-result-container .search-result .search-result-body { text-transform: uppercase; text-decoration: none; font-family: "Arial Narrow",Arial, sans-serif; }
+
+header.menu .matched-result .search-result-container .search-result .search-result-body a.search-result-link { color: black; text-decoration: none; font-size: 17px; font-weight: 600; }
+
+header.menu .matched-result .search-result-container .search-result .search-result-body .search-result-description { font-size: 13px; color: gray; font-weight: 400; }
+
 /** This is the central home page */
 section#home { position: absolute; width: 100%; height: 100%; top: 0; left: 0; padding: 100px 20px 0; background-image: url("/img/header.jpg"); background-size: cover; background-repeat: no-repeat; }
 
