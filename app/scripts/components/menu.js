@@ -3,6 +3,7 @@
  *
  */
 import React from 'react';
+import Search from './search';
 
 class Menu extends React.Component {
 
@@ -13,9 +14,10 @@ class Menu extends React.Component {
     constructor() {
         super();
         this.state = {
-            showingSearch: false,
-            searchResults: []
+            showingSearch: false
         };
+        // here we bind parent function to child component
+        this.showSearchContainer = this.showSearchContainer.bind(this)
     }
 
     /**
@@ -30,24 +32,7 @@ class Menu extends React.Component {
         });
     }
 
-    /**
-     * Calls upon search change
-     * @memberof Menu
-     * @param e [Object] - the event from a text change handler
-     */
-    onSearch(e) {
 
-        // gives cors origin error
-        const searchUrl = 'http://localhost:3035/search?query=' + e.target.value;
-        // Start Here
-        fetch(searchUrl)
-            .then(res => res.json())
-            .then((data) => {
-                this.setState({searchResults: data});
-                console.log(data)
-            })
-            .catch(console.log)
-    }
 
     /**
      * Renders the default app in the window, we have assigned this to an element called root.
@@ -56,7 +41,6 @@ class Menu extends React.Component {
      * @memberof App
      */
     render() {
-        let results = this.state.searchResults;
         return (
             <header className="menu">
                 <div className="menu-container">
@@ -77,51 +61,7 @@ class Menu extends React.Component {
                         </nav>
                     </div>
                 </div>
-                <div className={(this.state.showingSearch ? "showing " : "") + "search-container"}>
-                    <input type="text" onChange={(e) => this.onSearch(e)}/>
-                    <a href="#" onClick={(e) => this.showSearchContainer(e)}>
-                        <i className="material-icons close">close</i>
-                    </a>
-
-                    <div
-                        className="matched-result">
-                        <div className="see-result">
-                            <a className="" href="javascript:;">
-                                <span className="search-count first" role="link">
-                                    Displaying {results.length >= 4 ? '4 ' : results.length + ' '}
-                                    of {results.length} Results
-                                </span>
-                                <span className="search-results last" role="link">See All Results</span>
-                            </a>
-                        </div>
-                        <div className="search-result-container">
-
-                            {results.slice(0, 4).map((item, index) => {
-
-                                return <div key={index}
-                                            className="search-result">
-                                    <a
-                                        href="javascript:;"
-                                        className="search-result-image">
-                                        <img className=""
-                                             src={item.picture}/>
-                                    </a>
-                                    <div className="search-result-body">
-                                        <a className="search-result-link"
-                                           href="javascript:;">{item.name}</a>
-                                        <div className="search-result-description">
-                                            {item.tags.join(', ')}
-                                        </div>
-                                    </div>
-                                </div>
-
-                            })}
-
-
-                        </div>
-                    </div>
-
-                </div>
+           <Search showingSearch={this.state.showingSearch}  func={this.showSearchContainer}   />
 
             </header>
         );
