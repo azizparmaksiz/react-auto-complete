@@ -33,7 +33,7 @@
     "babel-loader": "8.0.0-beta.0",
     "babel-preset-react": "^6.24.1",
     "browser-sync": "^2.26.3",
-    "gulp": "3.9.1",
+    "gulp": "4.0.2",
     "gulp-autoprefixer": "4.0.0",
     "gulp-git": "^2.5.0",
     "gulp-imagemin": "4.0.0",
